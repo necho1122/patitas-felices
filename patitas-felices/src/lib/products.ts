@@ -67,6 +67,17 @@ const PET_PRODUCT_PRESETS = [
 	},
 ];
 
+const FALLBACK_PRODUCTS: ShopProduct[] = PET_PRODUCT_PRESETS.map(
+	(preset, index) => ({
+		id: index + 1000,
+		title: preset.title,
+		category: preset.category,
+		description: preset.description,
+		image: index % 2 === 0 ? '/logo-patitas.webp' : '/van-patitas.webp',
+		price: 14 + index * 3,
+	}),
+);
+
 function mapToPetProduct(product: ApiProduct, index: number): ShopProduct {
 	const preset = PET_PRODUCT_PRESETS[index % PET_PRODUCT_PRESETS.length];
 
@@ -80,6 +91,10 @@ function mapToPetProduct(product: ApiProduct, index: number): ShopProduct {
 	};
 }
 
+function getFallbackProducts(limit?: number): ShopProduct[] {
+	return limit ? FALLBACK_PRODUCTS.slice(0, limit) : FALLBACK_PRODUCTS;
+}
+
 export async function getProducts(limit?: number): Promise<ShopProduct[]> {
 	const url = limit ? `${API_URL}?limit=${limit}` : API_URL;
 
@@ -89,18 +104,22 @@ export async function getProducts(limit?: number): Promise<ShopProduct[]> {
 		});
 
 		if (!response.ok) {
-			return [];
+			return getFallbackProducts(limit);
 		}
 
 		const data = (await response.json()) as ApiProduct[];
 
 		if (!Array.isArray(data)) {
-			return [];
+			return getFallbackProducts(limit);
 		}
 
-		return data.map(mapToPetProduct);
+		const mappedProducts = data.map(mapToPetProduct);
+
+		return mappedProducts.length > 0
+			? mappedProducts
+			: getFallbackProducts(limit);
 	} catch {
-		return [];
+		return getFallbackProducts(limit);
 	}
 }
 
