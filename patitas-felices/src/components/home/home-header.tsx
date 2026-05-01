@@ -3,18 +3,35 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styles from './home-header.module.css';
+import { useAuth } from '@/components/auth/auth-context';
 import { LanguageSwitcher } from '@/components/i18n/language-switcher';
 import type { HomeBaseProps } from './home-types';
 
 export function HomeHeader({ lang, t }: HomeBaseProps) {
 	const [mobileOpen, setMobileOpen] = useState(false);
+	const { user, logout } = useAuth();
+	const pathname = usePathname();
 	const closeMobile = () => setMobileOpen(false);
 	const homeHref = `/${lang}`;
+	const panelHref = `/${lang}/panel`;
+	const authHref = `/${lang}/auth`;
 	const servicesHref = `/${lang}#servicios`;
 	const blogHref = `/${lang}#blog`;
 	const contactHref = `/${lang}#contacto`;
+	const routePath = (() => {
+		const parts = pathname.split('/').filter(Boolean);
+		const [, ...rest] = parts;
+		if (rest.length === 0) {
+			return '/';
+		}
+
+		return `/${rest.join('/')}`;
+	})();
 	const homeLabel = lang === 'es' ? 'Inicio' : 'Home';
+	const authLabel = lang === 'es' ? 'Acceder' : 'Sign in';
+	const logoutLabel = lang === 'es' ? 'Salir' : 'Log out';
 
 	return (
 		<header className={styles.header}>
@@ -84,6 +101,12 @@ export function HomeHeader({ lang, t }: HomeBaseProps) {
 					>
 						{t.nav.shop}
 					</Link>
+					<Link
+						href={panelHref}
+						className={styles.navLink}
+					>
+						{t.nav.panel}
+					</Link>
 					<a
 						href={blogHref}
 						className={styles.navLink}
@@ -100,8 +123,27 @@ export function HomeHeader({ lang, t }: HomeBaseProps) {
 
 				{/* Right actions: lang switcher + hamburger */}
 				<div className={styles.actions}>
+					{user ? (
+						<>
+							<span className={styles.userBadge}>{user.email}</span>
+							<button
+								type='button'
+								onClick={() => void logout()}
+								className={styles.authBtn}
+							>
+								{logoutLabel}
+							</button>
+						</>
+					) : (
+						<Link
+							href={authHref}
+							className={styles.authLink}
+						>
+							{authLabel}
+						</Link>
+					)}
 					<LanguageSwitcher
-						routePath='/'
+						routePath={routePath}
 						options={{ en: t.language.en, es: t.language.es }}
 						classNames={{
 							container: styles.langSwitch,
@@ -158,6 +200,33 @@ export function HomeHeader({ lang, t }: HomeBaseProps) {
 						onClick={closeMobile}
 					>
 						{t.nav.shop}
+					</Link>
+					{user ? (
+						<button
+							type='button'
+							onClick={() => {
+								void logout();
+								closeMobile();
+							}}
+							className={styles.mobileLinkButton}
+						>
+							{logoutLabel}
+						</button>
+					) : (
+						<Link
+							href={authHref}
+							className={styles.mobileLink}
+							onClick={closeMobile}
+						>
+							{authLabel}
+						</Link>
+					)}
+					<Link
+						href={panelHref}
+						className={styles.mobileLink}
+						onClick={closeMobile}
+					>
+						{t.nav.panel}
 					</Link>
 					<a
 						href={blogHref}

@@ -1,7 +1,12 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useMemo } from 'react';
 import styles from '@/app/shop/shop.module.css';
+import { useAuth } from '@/components/auth/auth-context';
 import { formatPrice, type ShopProduct } from '@/lib/products';
+import { useStore } from '@/components/store/store-context';
 import type { Lang } from '@/lib/i18n/types';
 import type { ShopDictionary } from '@/lib/i18n/dictionaries';
 
@@ -14,6 +19,17 @@ export function ShopPageContent({
 	t: ShopDictionary;
 	products: ShopProduct[];
 }) {
+	const { cartItems, addToCart } = useStore();
+	const { isAuthenticated } = useAuth();
+	const quantities = useMemo(() => {
+		const map = new Map<number, number>();
+		for (const item of cartItems) {
+			map.set(item.productId, item.quantity);
+		}
+		return map;
+	}, [cartItems]);
+	const loginHref = `/${lang}/auth`;
+
 	return (
 		<div className={styles.page}>
 			<header className={styles.header}>
@@ -21,6 +37,16 @@ export function ShopPageContent({
 					<p className={styles.kicker}>{t.kicker}</p>
 					<h1>{t.title}</h1>
 					<p>{t.description}</p>
+					{!isAuthenticated && (
+						<p>
+							{lang === 'es'
+								? 'Inicia sesion para guardar tu carrito y hacer compras seguras.'
+								: 'Sign in to save your cart and complete secure purchases.'}{' '}
+							<Link href={loginHref}>
+								{lang === 'es' ? 'Acceder' : 'Sign in'}
+							</Link>
+						</p>
+					)}
 				</div>
 
 				<div className={styles.actions}>
@@ -59,7 +85,16 @@ export function ShopPageContent({
 								<p className={styles.description}>{product.description}</p>
 								<div className={styles.footer}>
 									<strong>{formatPrice(product.price)}</strong>
-									<button type='button'>{t.add}</button>
+									<button
+										type='button'
+										onClick={() => void addToCart(product)}
+										disabled={!isAuthenticated}
+									>
+										{t.add}
+										{quantities.has(product.id)
+											? ` (${quantities.get(product.id)})`
+											: ''}
+									</button>
 								</div>
 							</article>
 						))}

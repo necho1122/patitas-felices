@@ -18,18 +18,20 @@ export function LanguageSwitcher({
 	classNames,
 }: {
 	label?: string;
-	routePath: '/' | '/shop';
+	routePath: string;
 	options: Record<Lang, string>;
 	classNames: LanguageSwitcherClassNames;
 }) {
 	const lang = useLanguage();
 
 	const getHref = (optionLang: Lang): string => {
-		if (routePath === '/') {
+		const normalizedPath = routePath && routePath !== '' ? routePath : '/';
+
+		if (normalizedPath === '/') {
 			return `/${optionLang}`;
 		}
 
-		return `/${optionLang}${routePath}`;
+		return `/${optionLang}${normalizedPath}`;
 	};
 
 	return (

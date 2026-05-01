@@ -25,7 +25,7 @@ export function HomeHeroSection({ t }: HomeBaseProps) {
 
 				<div className={styles.heroPetWrap}>
 					<Image
-						src='/your-groomer-day.webp'
+						src='/your-groomer-x.webp'
 						alt={t.hero.imageAlt}
 						className={styles.heroPetImage}
 						loading='eager'

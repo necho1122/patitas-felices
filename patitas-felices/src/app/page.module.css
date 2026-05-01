@@ -3,6 +3,7 @@
   --sky-blue: #8CCFF2;
   --pastel-yellow: #FFF2A3;
   --midnight-blue: #3E638A;
+  --titles-green: #319782;
   --mint-pop: #B9F0D7;
   --coral-soft: #FFB8A2;
   --cream: #FFFEF9;
@@ -194,7 +195,7 @@
   font-family: var(--font-baloo);
   font-size: clamp(2rem, 5.2vw, 4.35rem);
   line-height: 0.98;
-  color: var(--midnight-blue);
+  color: var(--titles-green);
   text-wrap: pretty;
   letter-spacing: 0.2px;
 }
@@ -477,7 +478,7 @@
 .card p
 {
   margin-top: 8px;
-  color: #54789b;
+  color: #2f4f66;
 }
 
 .shopIntro

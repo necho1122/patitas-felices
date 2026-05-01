@@ -1,0 +1,250 @@
+.page
+{
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 90% 8%, rgba(255, 184, 162, 0.24) 0%, transparent 24%),
+        radial-gradient(circle at 8% 18%, rgba(255, 242, 163, 0.28) 0%, transparent 26%),
+        linear-gradient(165deg, #fffef9 0%, #fffdf1 52%, #f8f3ea 100%);
+    color: #355878;
+    padding: 32px min(4vw, 40px) 50px;
+}
+
+.header,
+.main
+{
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.header
+{
+    margin-bottom: 18px;
+    padding: 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(239, 98, 77, 0.24);
+    background: #e9e2d4;
+    box-shadow: 0 14px 30px rgba(61, 82, 101, 0.12);
+}
+
+.kicker
+{
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(239, 98, 77, 0.34);
+    background: rgba(255, 254, 249, 0.88);
+    font-size: 0.84rem;
+    font-weight: 800;
+    color: #ef624d;
+}
+
+.header h1
+{
+    margin-top: 10px;
+    font-family: var(--font-baloo);
+    font-size: clamp(1.65rem, 3vw, 2.6rem);
+    color: #3e638a;
+    line-height: 1.1;
+}
+
+.header p
+{
+    margin-top: 8px;
+    max-width: 62ch;
+    color: #6b4f46;
+    line-height: 1.6;
+}
+
+.main
+{
+    display: grid;
+    gap: 16px;
+}
+
+.section
+{
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(239, 98, 77, 0.2);
+    background: #e9e2d4;
+    box-shadow: 0 12px 24px rgba(61, 82, 101, 0.1);
+}
+
+.sectionHead
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.sectionHead h2
+{
+    font-family: var(--font-baloo);
+    color: #3e638a;
+    font-size: 1.4rem;
+}
+
+.selector,
+.field input,
+.field select,
+.field textarea
+{
+    width: 100%;
+    border: 1px solid rgba(107, 79, 70, 0.28);
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #3a566f;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.petsGrid
+{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.petCard,
+.listItem
+{
+    border-radius: 14px;
+    border: 1px solid rgba(239, 98, 77, 0.22);
+    background: rgba(255, 255, 255, 0.7);
+    padding: 12px;
+}
+
+.petCard h3
+{
+    color: #3e638a;
+    margin-bottom: 8px;
+}
+
+.petCard p,
+.listItem p
+{
+    color: #6b4f46;
+    line-height: 1.4;
+}
+
+.form
+{
+    display: grid;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.field
+{
+    display: grid;
+    gap: 6px;
+}
+
+.field span
+{
+    color: #3e638a;
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.primaryButton,
+.ghostButton,
+.primaryLink,
+.inlineLink
+{
+    min-height: 40px;
+    border-radius: 10px;
+    padding: 9px 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.primaryButton,
+.primaryLink
+{
+    border: 0;
+    background: linear-gradient(135deg, #f4734c, #ef624d);
+    color: #fff;
+}
+
+.ghostButton,
+.inlineLink
+{
+    border: 1px solid rgba(39, 63, 84, 0.25);
+    background: rgba(255, 255, 255, 0.82);
+    color: #263f54;
+}
+
+.ghostButton
+{
+    cursor: pointer;
+}
+
+.list
+{
+    display: grid;
+    gap: 8px;
+}
+
+.listItem
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.summaryRow
+{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.success
+{
+    color: #2c7a4b;
+    font-weight: 800;
+}
+
+.error
+{
+    color: #a5372a;
+    font-weight: 800;
+}
+
+@media (max-width: 960px)
+{
+    .petsGrid
+    {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px)
+{
+    .page
+    {
+        padding: 22px 12px 38px;
+    }
+
+    .petsGrid
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .sectionHead,
+    .summaryRow,
+    .listItem
+    {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -189,6 +189,42 @@
     flex-shrink: 0;
 }
 
+.authLink,
+.authBtn
+{
+    min-height: 34px;
+    border-radius: 10px;
+    padding: 7px 12px;
+    font-weight: 800;
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+
+.authLink
+{
+    background: linear-gradient(135deg, #f4734c, #ef624d);
+    color: #fff;
+}
+
+.authBtn
+{
+    border: 1px solid rgba(39, 63, 84, 0.28);
+    background: rgba(255, 255, 255, 0.85);
+    color: #263f54;
+    cursor: pointer;
+}
+
+.userBadge
+{
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.74rem;
+    color: #6b4f46;
+    font-weight: 800;
+}
+
 /* Language switcher — compact pill */
 .langSwitch
 {
@@ -296,7 +332,31 @@
     cursor: pointer;
 }
 
+.mobileLinkButton
+{
+    text-align: left;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    display: block;
+    padding: 10px 14px;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #3e638a;
+    border-radius: 10px;
+    transition:
+        background 0.15s,
+        color 0.15s;
+    cursor: pointer;
+}
+
 .mobileLink:hover
+{
+    background: rgba(239, 98, 77, 0.07);
+    color: #ef624d;
+}
+
+.mobileLinkButton:hover
 {
     background: rgba(239, 98, 77, 0.07);
     color: #ef624d;
@@ -355,6 +415,13 @@
     .hamburger
     {
         display: inline-flex;
+    }
+
+    .userBadge,
+    .authLink,
+    .authBtn
+    {
+        display: none;
     }
 }
 

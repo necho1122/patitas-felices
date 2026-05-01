@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
+import { AuthProvider } from '@/components/auth/auth-context';
 import { HomeHeader } from '@/components/home/home-header';
 import { LanguageProvider } from '@/components/i18n/language-context';
+import { StoreProvider } from '@/components/store/store-context';
 import { getHomeDictionary } from '@/lib/i18n/dictionaries';
 import { resolveLang } from '@/lib/i18n/resolve-lang';
 import { SUPPORTED_LANGS } from '@/lib/i18n/routing';
@@ -29,11 +31,15 @@ export default async function LocaleLayout({
 
 	return (
 		<LanguageProvider lang={lang}>
-			<HomeHeader
-				lang={lang}
-				t={t}
-			/>
-			{children}
+			<AuthProvider>
+				<StoreProvider>
+					<HomeHeader
+						lang={lang}
+						t={t}
+					/>
+					{children}
+				</StoreProvider>
+			</AuthProvider>
 		</LanguageProvider>
 	);
 }

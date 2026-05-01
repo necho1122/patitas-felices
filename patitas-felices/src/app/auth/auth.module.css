@@ -1,0 +1,236 @@
+.page
+{
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 90% 8%, rgba(255, 184, 162, 0.24) 0%, transparent 24%),
+        radial-gradient(circle at 8% 18%, rgba(255, 242, 163, 0.28) 0%, transparent 26%),
+        linear-gradient(165deg, #fffef9 0%, #fffdf1 52%, #f8f3ea 100%);
+    padding: 32px min(4vw, 40px) 50px;
+    color: #355878;
+}
+
+.card
+{
+    max-width: 560px;
+    margin: 0 auto;
+    background: #e9e2d4;
+    border: 1px solid rgba(239, 98, 77, 0.22);
+    box-shadow: 0 14px 30px rgba(61, 82, 101, 0.12);
+    border-radius: 20px;
+    padding: 24px;
+    display: grid;
+    gap: 12px;
+}
+
+.card h1
+{
+    font-family: var(--font-baloo);
+    color: #3e638a;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.card p
+{
+    color: #6b4f46;
+    line-height: 1.5;
+}
+
+.warning
+{
+    color: #9a3e2c;
+    font-weight: 800;
+}
+
+.warningBox
+{
+    border-radius: 12px;
+    border: 1px solid rgba(165, 55, 42, 0.3);
+    background: rgba(255, 239, 234, 0.8);
+    padding: 10px 12px;
+    display: grid;
+    gap: 4px;
+}
+
+.warningDetails
+{
+    color: #8f3a2b;
+    font-size: 0.82rem;
+    word-break: break-word;
+}
+
+.form
+{
+    display: grid;
+    gap: 12px;
+}
+
+.googleBtn
+{
+    min-height: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(39, 63, 84, 0.25);
+    background: #fff;
+    color: #2f4f66;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.divider
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #6b4f46;
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.divider::before,
+.divider::after
+{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(39, 63, 84, 0.2);
+}
+
+.modeSwitch
+{
+    display: inline-flex;
+    gap: 6px;
+}
+
+.modeBtn,
+.activeMode
+{
+    min-height: 38px;
+    border-radius: 10px;
+    padding: 8px 12px;
+    border: 1px solid rgba(39, 63, 84, 0.25);
+    font-weight: 800;
+}
+
+.modeBtn
+{
+    background: rgba(255, 255, 255, 0.74);
+    color: #334f65;
+}
+
+.activeMode
+{
+    border: 0;
+    background: linear-gradient(135deg, #f4734c, #ef624d);
+    color: #fff;
+}
+
+.field
+{
+    display: grid;
+    gap: 6px;
+}
+
+.field span
+{
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #3e638a;
+}
+
+.field input
+{
+    border: 1px solid rgba(107, 79, 70, 0.28);
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #3a566f;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.field input:focus
+{
+    border-color: rgba(239, 98, 77, 0.7);
+    box-shadow: 0 0 0 2px rgba(239, 98, 77, 0.16);
+}
+
+.field small
+{
+    color: #6b4f46;
+}
+
+.submitBtn,
+.primaryLink,
+.secondaryBtn
+{
+    min-height: 42px;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submitBtn,
+.primaryLink
+{
+    border: 0;
+    background: linear-gradient(135deg, #f4734c, #ef624d);
+    color: #fff;
+}
+
+.secondaryBtn
+{
+    border: 1px solid rgba(39, 63, 84, 0.25);
+    color: #263f54;
+    background: rgba(255, 255, 255, 0.82);
+    cursor: pointer;
+}
+
+.actions
+{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.resetForm
+{
+    display: grid;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(39, 63, 84, 0.22);
+}
+
+.error
+{
+    color: #a5372a;
+    font-weight: 800;
+}
+
+.info
+{
+    color: #2c7a4b;
+    font-weight: 800;
+}
+
+@media (max-width: 560px)
+{
+    .page
+    {
+        padding: 22px 12px 38px;
+    }
+
+    .card
+    {
+        padding: 18px;
+    }
+
+    .submitBtn,
+    .primaryLink,
+    .secondaryBtn,
+    .googleBtn
+    {
+        width: 100%;
+    }
+}

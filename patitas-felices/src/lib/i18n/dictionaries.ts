@@ -7,6 +7,8 @@ const HOME_DICTIONARY = {
 			services: 'Services',
 			servicesMenu: ['Relaxing Spa', 'Premium Grooming', 'Senior Plan'],
 			shop: 'Shop',
+			profile: 'Create Profile',
+			panel: 'User Panel',
 			blog: 'Blog',
 			contact: 'Contact',
 		},
@@ -69,6 +71,8 @@ const HOME_DICTIONARY = {
 			services: 'Servicios',
 			servicesMenu: ['Spa Relajante', 'Grooming Premium', 'Plan Senior'],
 			shop: 'Tienda',
+			profile: 'Crear perfil',
+			panel: 'Panel usuario',
 			blog: 'Blog',
 			contact: 'Contacto',
 		},
@@ -160,8 +164,191 @@ const SHOP_DICTIONARY = {
 	},
 } as const;
 
+const PROFILE_DICTIONARY = {
+	en: {
+		kicker: 'User Profile',
+		title: 'Create your account and your pet profile',
+		lead: 'Register your details to manage appointments, preferences, and your pet history in one place.',
+		fields: {
+			ownerName: 'Full name',
+			ownerNamePlaceholder: 'Your full name',
+			email: 'Email',
+			emailPlaceholder: 'you@example.com',
+			phone: 'Phone',
+			phonePlaceholder: '+1 555 123 4567',
+			petName: 'Pet name',
+			petNamePlaceholder: 'Your pet name',
+			petType: 'Pet type',
+			petTypeOptions: {
+				dog: 'Dog',
+				cat: 'Cat',
+				other: 'Other',
+			},
+			breed: 'Breed',
+			breedPlaceholder: 'Ex: Golden Retriever',
+			age: 'Age',
+			agePlaceholder: 'Ex: 3',
+			size: 'Size',
+			sizeOptions: {
+				small: 'Small',
+				medium: 'Medium',
+				large: 'Large',
+			},
+			weight: 'Weight (kg)',
+			weightPlaceholder: 'Ex: 12.5',
+			notes: 'Notes',
+			notesPlaceholder: 'Allergies, behavior, or special care instructions',
+		},
+		submit: 'Create profile',
+		success: 'Profile saved successfully.',
+		goToPanel: 'Go to user panel',
+		backToHome: 'Back to home',
+	},
+	es: {
+		kicker: 'Perfil de usuario',
+		title: 'Crea tu cuenta y el perfil de tu mascota',
+		lead: 'Registra tus datos para gestionar citas, preferencias e historial de tu mascota en un solo lugar.',
+		fields: {
+			ownerName: 'Nombre completo',
+			ownerNamePlaceholder: 'Tu nombre completo',
+			email: 'Correo',
+			emailPlaceholder: 'tu@correo.com',
+			phone: 'Telefono',
+			phonePlaceholder: '+52 55 1234 5678',
+			petName: 'Nombre de la mascota',
+			petNamePlaceholder: 'Nombre de tu mascota',
+			petType: 'Tipo de mascota',
+			petTypeOptions: {
+				dog: 'Perro',
+				cat: 'Gato',
+				other: 'Otro',
+			},
+			breed: 'Raza',
+			breedPlaceholder: 'Ej: Golden Retriever',
+			age: 'Edad',
+			agePlaceholder: 'Ej: 3',
+			size: 'Tamano',
+			sizeOptions: {
+				small: 'Pequeno',
+				medium: 'Mediano',
+				large: 'Grande',
+			},
+			weight: 'Peso (kg)',
+			weightPlaceholder: 'Ej: 12.5',
+			notes: 'Notas',
+			notesPlaceholder: 'Alergias, comportamiento o cuidados especiales',
+		},
+		submit: 'Crear perfil',
+		success: 'Perfil guardado correctamente.',
+		goToPanel: 'Ir al panel de usuario',
+		backToHome: 'Volver al inicio',
+	},
+} as const;
+
+const PANEL_DICTIONARY = {
+	en: {
+		kicker: 'User Panel',
+		title: 'Control center for your pets and appointments',
+		lead: 'Manage pet details, schedule services, and track your cart in one place.',
+		actions: {
+			logout: 'Log out',
+		},
+		emptyUser: 'No profile selected yet. Create your profile to start.',
+		createProfile: 'Create profile',
+		sections: {
+			pets: 'Pet profiles',
+			appointments: 'Appointments',
+			cart: 'Cart summary',
+		},
+		pets: {
+			empty: 'You do not have pets registered yet.',
+			meta: {
+				breed: 'Breed',
+				age: 'Age',
+				size: 'Size',
+				weight: 'Weight',
+				notes: 'Notes',
+			},
+		},
+		appointmentForm: {
+			title: 'Schedule a new appointment',
+			pet: 'Pet',
+			service: 'Service',
+			date: 'Date and time',
+			notes: 'Notes',
+			submit: 'Schedule appointment',
+			success: 'Appointment scheduled successfully.',
+		},
+		appointments: {
+			empty: 'You have no appointments yet.',
+			status: {
+				scheduled: 'Scheduled',
+				cancelled: 'Cancelled',
+			},
+			cancel: 'Cancel',
+		},
+		cart: {
+			empty: 'Your cart is empty.',
+			items: 'Items',
+			total: 'Total',
+			clear: 'Clear cart',
+		},
+	},
+	es: {
+		kicker: 'Panel de usuario',
+		title: 'Centro de control para tus mascotas y citas',
+		lead: 'Gestiona detalles de mascotas, agenda servicios y revisa tu carrito en un solo lugar.',
+		actions: {
+			logout: 'Cerrar sesion',
+		},
+		emptyUser:
+			'Aun no hay un perfil seleccionado. Crea tu perfil para empezar.',
+		createProfile: 'Crear perfil',
+		sections: {
+			pets: 'Perfiles de mascotas',
+			appointments: 'Citas',
+			cart: 'Resumen de carrito',
+		},
+		pets: {
+			empty: 'No tienes mascotas registradas todavia.',
+			meta: {
+				breed: 'Raza',
+				age: 'Edad',
+				size: 'Tamano',
+				weight: 'Peso',
+				notes: 'Notas',
+			},
+		},
+		appointmentForm: {
+			title: 'Agendar una nueva cita',
+			pet: 'Mascota',
+			service: 'Servicio',
+			date: 'Fecha y hora',
+			notes: 'Notas',
+			submit: 'Agendar cita',
+			success: 'Cita agendada correctamente.',
+		},
+		appointments: {
+			empty: 'Aun no tienes citas registradas.',
+			status: {
+				scheduled: 'Programada',
+				cancelled: 'Cancelada',
+			},
+			cancel: 'Cancelar',
+		},
+		cart: {
+			empty: 'Tu carrito esta vacio.',
+			items: 'Articulos',
+			total: 'Total',
+			clear: 'Vaciar carrito',
+		},
+	},
+} as const;
+
 export type HomeDictionary = (typeof HOME_DICTIONARY)[Lang];
 export type ShopDictionary = (typeof SHOP_DICTIONARY)[Lang];
+export type ProfileDictionary = (typeof PROFILE_DICTIONARY)[Lang];
+export type PanelDictionary = (typeof PANEL_DICTIONARY)[Lang];
 
 export function getHomeDictionary(lang: Lang): HomeDictionary {
 	return HOME_DICTIONARY[lang];
@@ -169,4 +356,12 @@ export function getHomeDictionary(lang: Lang): HomeDictionary {
 
 export function getShopDictionary(lang: Lang): ShopDictionary {
 	return SHOP_DICTIONARY[lang];
+}
+
+export function getProfileDictionary(lang: Lang): ProfileDictionary {
+	return PROFILE_DICTIONARY[lang];
+}
+
+export function getPanelDictionary(lang: Lang): PanelDictionary {
+	return PANEL_DICTIONARY[lang];
 }
