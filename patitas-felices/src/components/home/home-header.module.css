@@ -1,0 +1,377 @@
+/* ==========================================
+   HEADER — Sticky navbar
+   ========================================== */
+
+.header
+{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: rgba(255, 254, 249, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(239, 98, 77, 0.14);
+    box-shadow: 0 2px 18px rgba(61, 82, 101, 0.07);
+}
+
+/* Inner row */
+.inner
+{
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 10px clamp(16px, 4vw, 40px);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ==========================================
+   BRAND
+   ========================================== */
+
+.brand
+{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-baloo);
+    font-size: 1rem;
+    font-weight: 800;
+    color: #3e638a;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.brandLogo
+{
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    border: 1px solid rgba(62, 99, 138, 0.2);
+    box-shadow: 0 3px 8px rgba(44, 72, 97, 0.12);
+    object-fit: cover;
+    background: #fff;
+}
+
+/* ==========================================
+   DESKTOP NAV
+   ========================================== */
+
+.nav
+{
+    display: flex;
+    align-items: center;
+    gap: clamp(0px, 0.8vw, 14px);
+    margin-left: auto;
+}
+
+.navLink
+{
+    padding: 6px 10px;
+    font-weight: 800;
+    font-size: 0.92rem;
+    color: #3e638a;
+    transition: color 0.2s;
+    white-space: nowrap;
+    border-radius: 8px;
+}
+
+.navLink:hover
+{
+    color: #ef624d;
+}
+
+/* ==========================================
+   DROPDOWN — Servicios
+   ========================================== */
+
+.dropdown
+{
+    position: relative;
+}
+
+.dropdownTrigger
+{
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 10px;
+    font-family: var(--font-nunito);
+    font-weight: 800;
+    font-size: 0.92rem;
+    color: #3e638a;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    white-space: nowrap;
+    border-radius: 8px;
+}
+
+.dropdownTrigger:hover,
+.dropdown:focus-within .dropdownTrigger
+{
+    color: #ef624d;
+}
+
+.dropdownArrow
+{
+    font-size: 0.6rem;
+    transition: transform 0.22s ease;
+    display: inline-block;
+    opacity: 0.7;
+}
+
+.dropdown:hover .dropdownArrow,
+.dropdown:focus-within .dropdownArrow
+{
+    transform: rotate(180deg);
+}
+
+.dropdownMenu
+{
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 192px;
+    background: #fffef9;
+    border: 1px solid rgba(239, 98, 77, 0.2);
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(61, 82, 101, 0.15);
+    padding: 8px;
+    list-style: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+    z-index: 50;
+}
+
+.dropdown:hover .dropdownMenu,
+.dropdown:focus-within .dropdownMenu
+{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.dropdownItem
+{
+    display: block;
+    padding: 9px 14px;
+    border-radius: 9px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #3e638a;
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+
+.dropdownItem:hover
+{
+    background: rgba(239, 98, 77, 0.08);
+    color: #ef624d;
+}
+
+/* ==========================================
+   RIGHT ACTIONS (lang switcher + hamburger)
+   ========================================== */
+
+.actions
+{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* Language switcher — compact pill */
+.langSwitch
+{
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px;
+    border-radius: 10px;
+    border: 1px solid rgba(239, 98, 77, 0.3);
+    background: rgba(255, 254, 249, 0.9);
+    flex-shrink: 0;
+}
+
+/* Label hidden (compact mode) */
+.langSwitchLabel
+{
+    display: none;
+}
+
+.langLink
+{
+    width: 32px;
+    height: 28px;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #7a5548;
+    transition: color 0.15s;
+}
+
+.langLink:hover
+{
+    color: #ef624d;
+}
+
+.activeLang
+{
+    width: 32px;
+    height: 28px;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #f4734c, #ef624d);
+}
+
+/* Hamburger — shown only on mobile */
+.hamburger
+{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 9px;
+    color: #3e638a;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition:
+        background 0.15s,
+        color 0.15s;
+    flex-shrink: 0;
+}
+
+.hamburger:hover
+{
+    background: rgba(239, 98, 77, 0.08);
+    color: #ef624d;
+}
+
+/* ==========================================
+   MOBILE NAV PANEL
+   ========================================== */
+
+.mobilePanel
+{
+    display: flex;
+    flex-direction: column;
+    padding: 10px clamp(16px, 4vw, 40px) 16px;
+    border-top: 1px solid rgba(239, 98, 77, 0.12);
+    gap: 2px;
+    background: rgba(255, 254, 249, 0.99);
+}
+
+.mobileLink
+{
+    display: block;
+    padding: 10px 14px;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #3e638a;
+    border-radius: 10px;
+    transition:
+        background 0.15s,
+        color 0.15s;
+    cursor: pointer;
+}
+
+.mobileLink:hover
+{
+    background: rgba(239, 98, 77, 0.07);
+    color: #ef624d;
+}
+
+.mobileServicesLabel
+{
+    padding: 10px 14px;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #3e638a;
+    opacity: 0.65;
+    cursor: default;
+}
+
+.mobileServicesList
+{
+    list-style: none;
+    padding: 2px 0 4px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mobileServicesItem
+{
+    display: block;
+    padding: 8px 14px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #6b4f46;
+    border-radius: 9px;
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+
+.mobileServicesItem:hover
+{
+    background: rgba(239, 98, 77, 0.07);
+    color: #ef624d;
+}
+
+/* ==========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================== */
+
+/* Hide desktop nav, show hamburger below 768px */
+@media (max-width: 768px)
+{
+    .nav
+    {
+        display: none;
+    }
+
+    .hamburger
+    {
+        display: inline-flex;
+    }
+}
+
+/* Hide mobile panel on desktop (safety net for SSR edge cases) */
+@media (min-width: 769px)
+{
+    .mobilePanel
+    {
+        display: none;
+    }
+}
+
+/* Very small screens: hide brand text, keep logo */
+@media (max-width: 360px)
+{
+    .brand strong
+    {
+        display: none;
+    }
+}
