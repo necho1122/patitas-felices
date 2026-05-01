@@ -53,18 +53,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 	}, []);
 
 	useEffect(() => {
-		if (!auth || !hasFirebaseConfig) {
+		const firebaseAuth = auth;
+		if (!firebaseAuth || !hasFirebaseConfig) {
 			setLoading(false);
 			return;
 		}
 
 		let isMounted = true;
-		let unsubscribe = () => undefined;
+		let unsubscribe: () => void = () => {};
 
 		const initAuth = async () => {
 			try {
-				await setPersistence(auth, browserLocalPersistence);
-				await getRedirectResult(auth);
+				await setPersistence(firebaseAuth, browserLocalPersistence);
+				await getRedirectResult(firebaseAuth);
 			} catch {
 				// Errors are handled by auth actions; keep listener active for state recovery.
 			}
@@ -73,7 +74,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 				return;
 			}
 
-			unsubscribe = onAuthStateChanged(auth, (nextUser) => {
+			unsubscribe = onAuthStateChanged(firebaseAuth, (nextUser) => {
 				setUser(nextUser);
 				setLoading(false);
 			});
